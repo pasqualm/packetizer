@@ -1,0 +1,72 @@
+Wbusy.exe version 1.01 (c) 2008-2011, Horst Schaeffer
+-----------------------------------------------------
+
+This little program displays a busy indicator window while a time-consuming batch process is running. To close the window, or to replace it with a "done" message, run the program again with the /stop parameter.
+
+++++ Syntax to start the busy indicator (Start mode): 
+
+     START Wbusy "Title" "Text" /count /marquee
+
+The title is mandatory. Title and text must be enclosed in double quote marks. 
+Optional style: /Marquee or /Count (Marquee is only available with Windows XP+)
+Default Style is a mock marquee (text mode).
+
+
+Example: START Wbusy "Image Batch" "Processing files" /marquee
+
+It is important to use the START command, because this will let the batch continue. 
+The window can be aborted with the [x] button (title bar) or ESC. 
+
+
+++++ Syntax to stop a running busy indicator (Stop mode): 
+
+     Wbusy "Title" "Text" /stop /sound /timeout=n
+
+This will kill the first instance, IF THE SAME TITLE IS GIVEN 
+(otherwise the first instance cannot be identified).
+
+If a text is given, a new window with an OK button will replace the first instance. If no text is given, the first window will just vanish. 
+
+The /stop parameter is mandatory for this mode.
+Optional: /sound (Windows default sound)
+Optional: /timeout=n (n seconds until the window will be closed)
+
+Example: Wbusy "Image Batch" "All files done; errorlevel: %errorlevel%" /stop /sound
+
+In the text string the token $sec will be replaced by the number of seconds the first instance has been running. 
+
+Example: Wbusy "Image Batch" "All files done ($sec seconds)" /stop 
+
+When the second instance (Stop mode window) is run without START (or with START /WAIT), the batch process will be halted until the window is closed. 
+
+
+++++ Notes:
+
+In the text string you may use the caret character (^) for line breaks. 
+To show double quote marks, use two single quote marks. 
+Case ignored for options. 
+ESC key closes the window. 
+
+It is also possible to replace a busy indicator with a new one without /stop. Just make sure the same title is used.
+
+Wbusy does not report any syntax errors. Please test to see whether it works.
+You can test the Wbusy windows on the command line (START not required). 
+
+
+++++ History: 
+
+03 Mar 2011   ver 1.01  Fixed: 'Keep on top' issue
+31 Jan 2008   ver 1.0,  first public release
+
+++++ Disclaimer
+
+This program is freeware (c) Horst Schaeffer. No warranty, no liability of any kind.
+
+PureBasic Source: http://www.horstmuc.de/source/wbusy101.zip
+
+mailto:horst.schaeffer@gmx.net
+http://www.horstmuc.de/
+
+07 Mar 2011
+
+

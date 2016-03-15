@@ -1,0 +1,5 @@
+set path=%path%;F:\Programas\Windows Kits\8.1\bin\x64
+
+mt.exe -nologo -manifest "F:\Programas\7z920_extra\manifest_uac.manifest" -outputresource:"F:\Programas\7z920_extra\7zsd_LZMA2.withUAC.sfx;#1"
+
+mt.exe -nologo -manifest "F:\Programas\7z920_extra\manifest_uac_x64.manifest" -outputresource:"F:\Programas\7z920_extra\7zsd_LZMA2_x64.withUAC.sfx;#1"
